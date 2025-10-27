@@ -1,20 +1,38 @@
-import react from 'react'
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './Components/Navbar.jsx'
 import HeroSection from './Components/HeroSection.jsx';
 import Services from './Components/Services.jsx';
 import Billboards from './Components/Billboards.jsx';
 import Contact from './Components/Contact.jsx';
+import DashboardApp from './dashboard/DashboardApp.jsx';
+
+// Main Site Component
+const MainSite = () => {
+  return (
+    <div>
+      <Navbar />
+      <HeroSection />
+      <Services />
+      <Billboards />
+      <Contact />
+    </div>
+  );
+};
 
 function App() {
-
+  console.log('App rendering...');
+  
   return (
-      <div>
-        <Navbar />
-        <HeroSection />
-        <Services />
-        <Billboards />
-        <Contact />
-      </div>
+    <Router>
+      <Routes>
+        {/* Main Website Routes */}
+        <Route path="/" element={<MainSite />} />
+        
+        {/* Dashboard Routes */}
+        <Route path="/dashboard/*" element={<DashboardApp />} />
+      </Routes>
+    </Router>
   );
 }
 

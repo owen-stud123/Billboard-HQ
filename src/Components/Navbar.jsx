@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { FiAlignRight, FiX } from "react-icons/fi";
 
 const Navbar = () => {
@@ -16,6 +17,9 @@ const Navbar = () => {
         setNav(false); // Close mobile menu after clicking
     }
 
+    const location = useLocation();
+    const isDashboard = location.pathname.startsWith('/dashboard');
+
     const navItems = [
         { name: 'Home', id: 'home' },
         { name: 'Services', id: 'services' },
@@ -32,7 +36,7 @@ const Navbar = () => {
         >
           Billboard HQ .
         </h1>
-        <ul className='hidden md:flex'>
+        <ul className='hidden md:flex items-center'>
           {navItems.map((item) => (
             <li 
               key={item.id}
@@ -42,6 +46,14 @@ const Navbar = () => {
               {item.name}
             </li>
           ))}
+          <li className='p-4'>
+            <Link 
+              to="/dashboard/login"
+              className='bg-[#25fcb8] text-[#000300] px-6 py-2 rounded-full font-semibold hover:bg-[#1fdb9f] transition-all duration-300 hover:shadow-lg hover:shadow-[#25fcb8]/50'
+            >
+              Dashboard
+            </Link>
+          </li>
         </ul>
         <div onClick={handleNav} className='block md:hidden cursor-pointer text-2xl'>
           {nav ? <FiX /> : <FiAlignRight />}
@@ -61,6 +73,15 @@ const Navbar = () => {
                 {item.name}
               </li>
             ))}
+            <li className='p-4 border-b border-gray-600'>
+              <Link 
+                to="/dashboard/login"
+                onClick={() => setNav(false)}
+                className='block bg-[#25fcb8] text-[#000300] px-6 py-3 rounded-full font-semibold text-center hover:bg-[#1fdb9f] transition-all duration-300'
+              >
+                Dashboard
+              </Link>
+            </li>
           </ul>
        </div>
       </div>
