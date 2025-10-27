@@ -32,7 +32,7 @@ const Profile = () => {
             </div>
             <div className="detail-item">
               <label>Phone</label>
-              <p>{user.phone || '+1 (555) 123-4567'}</p>
+              <p>{user.phone || '+(250) 788-4567'}</p>
             </div>
             <div className="detail-item">
               <label>Role</label>
