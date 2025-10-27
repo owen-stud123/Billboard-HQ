@@ -1,0 +1,71 @@
+import React,{useState} from 'react'
+import { FiAlignRight, FiX } from "react-icons/fi";
+
+const Navbar = () => {
+    const [nav, setNav] = useState(false);
+
+    const handleNav = () => {
+        setNav(!nav)
+    }
+
+    const scrollToSection = (sectionId) => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+        setNav(false); // Close mobile menu after clicking
+    }
+
+    const navItems = [
+        { name: 'Home', id: 'home' },
+        { name: 'Services', id: 'services' },
+        { name: 'Billboards', id: 'billboards' },
+        { name: 'Contact', id: 'contact' }
+    ];
+
+  return (
+    <div className='fixed top-0 left-0 right-0 z-50 bg-[#000300]/95 backdrop-blur-sm shadow-lg'>
+      <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white'>
+        <h1 
+          onClick={() => scrollToSection('home')}
+          className='text-full text-3xl font-bold text-[#25fcb8] cursor-pointer hover:text-[#1fdb9f] transition-colors duration-300'
+        >
+          Billboard HQ .
+        </h1>
+        <ul className='hidden md:flex'>
+          {navItems.map((item) => (
+            <li 
+              key={item.id}
+              onClick={() => scrollToSection(item.id)}
+              className='p-4 cursor-pointer hover:text-[#25fcb8] transition-colors duration-300 font-medium'
+            >
+              {item.name}
+            </li>
+          ))}
+        </ul>
+        <div onClick={handleNav} className='block md:hidden cursor-pointer text-2xl'>
+          {nav ? <FiX /> : <FiAlignRight />}
+        </div>
+        <div className={nav ? 'fixed left-0 top-0 w-[60%] h-full border-r border-gray-900 bg-[#000300] ease-in-out duration-500 z-50' : 'fixed left-[-100%] top-0 h-full ease-in-out duration-500'}>
+          <div className='flex justify-between items-center p-4 border-b border-gray-800'>
+            <h1 className='text-full text-3xl font-bold text-[#25fcb8]'>Billboard HQ .</h1>
+            <FiX onClick={handleNav} className='text-2xl cursor-pointer hover:text-[#25fcb8] transition-colors' />
+          </div>
+          <ul className='uppercase p-4'>
+            {navItems.map((item) => (
+              <li 
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className='p-4 border-b border-gray-600 cursor-pointer hover:text-[#25fcb8] hover:bg-gray-900/50 transition-all duration-300'
+              >
+                {item.name}
+              </li>
+            ))}
+          </ul>
+       </div>
+      </div>
+    </div>
+  )
+}
+
+export default Navbar
