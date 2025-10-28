@@ -58,12 +58,12 @@ const Navbar = () => {
         <div onClick={handleNav} className='block md:hidden cursor-pointer text-2xl'>
           {nav ? <FiX /> : <FiAlignRight />}
         </div>
-        <div className={nav ? 'fixed left-0 top-0 w-[60%] h-full border-r border-gray-900 bg-[#000300] ease-in-out duration-500 z-50' : 'fixed left-[-100%] top-0 h-full ease-in-out duration-500'}>
+        <div className={nav ? 'fixed left-0 top-0 w-[60%] h-full border-r border-gray-900 bg-[#000300] ease-in-out duration-500 z-50' : 'fixed left-[-100%] top-0 w-[60%] h-full border-r border-gray-900 bg-[#000300] ease-in-out duration-500 z-50'}>
           <div className='flex justify-between items-center p-4 border-b border-gray-800'>
             <h1 className='text-full text-3xl font-bold text-[#25fcb8]'>Billboard HQ .</h1>
             <FiX onClick={handleNav} className='text-2xl cursor-pointer hover:text-[#25fcb8] transition-colors' />
           </div>
-          <ul className='uppercase p-4'>
+          <ul className='uppercase p-4 bg-[#000300]'>
             {navItems.map((item) => (
               <li 
                 key={item.id}

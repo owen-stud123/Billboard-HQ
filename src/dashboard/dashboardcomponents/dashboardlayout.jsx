@@ -1,7 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
-import '../../App.css';
 import './dashboardStyles.css';
 
 const DashboardLayout = () => {

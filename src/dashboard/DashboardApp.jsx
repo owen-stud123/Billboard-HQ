@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import DashboardLayout from './dashboardcomponents/dashboardlayout';
+import DashboardLayout from './dashboardcomponents/dashboardlayout.jsx';
 import Dashboard from './dashboardpages/Dashboard';
 import Login from './dashboardpages/Login';
 import Profile from './dashboardpages/Profile';
