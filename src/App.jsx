@@ -6,6 +6,7 @@ import Services from './Components/Services.jsx';
 import Billboards from './Components/Billboards.jsx';
 import Contact from './Components/Contact.jsx';
 import DashboardApp from './dashboard/DashboardApp.jsx';
+import Footer from './Components/Footer.jsx';
 
 // Main Site Component
 const MainSite = () => {
@@ -16,6 +17,7 @@ const MainSite = () => {
       <Services />
       <Billboards />
       <Contact />
+      <Footer />
     </div>
   );
 };
