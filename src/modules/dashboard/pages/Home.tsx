@@ -37,7 +37,7 @@ const Home = () => {
          When an advertising contract ends, the billboard automatically switches back to “Available,” ensuring smooth and efficient turnover.
          To maximize opportunity, billboards in high-demand areas also feature a bidding option, 
          allowing companies to compete for premium advertising spots and owners to earn greater value from strategic locations.
-         We are transforming the future of outdoor "kdkd,x" advertising by promoting transparency, efficiency and growth for both businesses and billboard operators.
+         We are transforming the future of outdoor advertising by promoting transparency, efficiency and growth for both businesses and billboard operators.
       </p>
     </div>
   </div>
