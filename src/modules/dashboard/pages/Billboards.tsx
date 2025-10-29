@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { billboardsRepo } from '../../data/billboardsRepo';
+import type { Billboard } from '../../data/types';
+import BillboardModal from './BillboardModal';
+import EditBillboardsModal from './EditBillboardsModal';
 
 const statusStyles: Record<string, string> = {
   available: 'bg-green-100 text-green-700',
@@ -8,7 +11,35 @@ const statusStyles: Record<string, string> = {
 };
 
 const Billboards: React.FC = () => {
-  const boards = billboardsRepo.all();
+  const [boards, setBoards] = useState(billboardsRepo.all());
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditListModalOpen, setIsEditListModalOpen] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [selectedBillboard, setSelectedBillboard] = useState<Billboard | undefined>(undefined);
+
+  const handleAdd = () => {
+    setEditMode(false);
+    setSelectedBillboard(undefined);
+    setIsModalOpen(true);
+  };
+
+  const handleOpenEditList = () => {
+    setIsEditListModalOpen(true);
+  };
+
+  const handleEditFromList = (billboard: Billboard) => {
+    setEditMode(true);
+    setSelectedBillboard(billboard);
+    setIsEditListModalOpen(false);
+    setIsModalOpen(true);
+  };
+
+  const handleSave = (billboard: Billboard) => {
+    billboardsRepo.upsert(billboard);
+    setBoards(billboardsRepo.all());
+    setIsModalOpen(false);
+    setSelectedBillboard(undefined);
+  };
 
   return (
     <div className="p-6">
@@ -18,9 +49,20 @@ const Billboards: React.FC = () => {
           <h2 className="text-2xl font-bold text-gray-800">Billboards</h2>
           <p className="text-gray-500 text-sm">All billboard locations and statuses</p>
         </div>
-        <button className="px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800">
-          + Add Billboard
-        </button>
+        <div className="flex gap-3">
+          <button 
+            onClick={handleAdd}
+            className="px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition"
+          >
+            + Add Billboard
+          </button>
+          <button 
+            onClick={handleOpenEditList}
+            className="px-4 py-2 bg-gray-600 text-white rounded-md hover:bg-gray-700 transition"
+          >
+            Edit Billboards
+          </button>
+        </div>
       </div>
 
       {/* --- Table --- */}
@@ -33,7 +75,7 @@ const Billboards: React.FC = () => {
               <th className="py-3 px-4">Address</th>
               <th className="py-3 px-4">Type</th>
               <th className="py-3 px-4">Size</th>
-              <th className="py-3 px-4">Price/mo</th>
+              <th className="py-3 px-4">Price/mo(frw)</th>
               <th className="py-3 px-4">Status</th>
               <th className="py-3 px-4 text-right">Action</th>
             </tr>
@@ -49,7 +91,7 @@ const Billboards: React.FC = () => {
                 <td className="py-3 px-4">{b.location.address}</td>
                 <td className="py-3 px-4 capitalize">{b.type}</td>
                 <td className="py-3 px-4">{b.size}</td>
-                <td className="py-3 px-4">Rwf{b.pricePerMonth}</td>
+                <td className="py-3 px-4">{b.pricePerMonth}</td>
                 <td className="py-3 px-4">
                   <span
                     className={`px-2 py-1 rounded-full text-xs font-semibold ${statusStyles[b.status]}`}
@@ -61,12 +103,7 @@ const Billboards: React.FC = () => {
                   {b.status === 'available' ? (
                     <button className="text-blue-600 hover:underline">Bid</button>
                   ) : (
-                    <button
-                      disabled
-                      className="text-gray-400 cursor-not-allowed"
-                    >
-                      Unavailable
-                    </button>
+                    <span className="text-gray-400">Unavailable</span>
                   )}
                 </td>
               </tr>
@@ -74,6 +111,25 @@ const Billboards: React.FC = () => {
           </tbody>
         </table>
       </div>
+
+      {/* --- Billboard Modal --- */}
+      {isModalOpen && (
+        <BillboardModal 
+          editMode={editMode}
+          billboard={selectedBillboard}
+          onClose={() => setIsModalOpen(false)}
+          onSave={handleSave}
+        />
+      )}
+
+      {/* --- Edit Billboards List Modal --- */}
+      {isEditListModalOpen && (
+        <EditBillboardsModal
+          billboards={boards}
+          onClose={() => setIsEditListModalOpen(false)}
+          onEdit={handleEditFromList}
+        />
+      )}
     </div>
   );
 };
