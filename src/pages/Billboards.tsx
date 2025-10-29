@@ -8,7 +8,7 @@ import bill4 from '../assets/images/bill4.jpeg'
 import bill5 from '../assets/images/bill5.jpeg'
 
 const Billboards: React.FC = () => {
-  const available = billboardsRepo.findAvailable();
+  const boards = billboardsRepo.all();
   const rwf = new Intl.NumberFormat('rw-RW', { style: 'currency', currency: 'RWF' });
 
   return (
@@ -27,7 +27,7 @@ const Billboards: React.FC = () => {
 
         {/* Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {available.map((b, idx) => (
+          {boards.map((b, idx) => (
             <div
               key={b.id}
               className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden transform hover:-translate-y-2"
@@ -51,7 +51,7 @@ const Billboards: React.FC = () => {
                       'text-xs inline-block mt-1 px-2 py-0.5 rounded ' +
                       (b.status === 'available' ? 'bg-green-50 text-green-700' : b.status === 'occupied' ? 'bg-red-50 text-red-700' : 'bg-amber-50 text-amber-700')
                     }>
-                      {b.status}
+                      {b.status === 'occupied' ? 'unavailable' : b.status}
                     </div>
                   </div>
                 </div>

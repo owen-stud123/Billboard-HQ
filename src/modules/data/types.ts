@@ -38,6 +38,12 @@ export interface Contract {
   endDate: string;   // ISO date
   monthlyRate: number;
   status: ContractStatus;
+  awardedTo?: {
+    name?: string;
+    email?: string;
+    phone?: string;
+    companyName?: string;
+  };
 }
 
 export type BidStatus = 'open' | 'accepted' | 'rejected' | 'withdrawn';
@@ -48,6 +54,10 @@ export interface Bid {
   companyId: string;
   amount: number;
   note?: string;
+  name?: string;
+  email?: string;
+  phone?: string;
+  companyName?: string;
   createdAt: string; // ISO date
   status: BidStatus;
 }

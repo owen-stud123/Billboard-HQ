@@ -24,8 +24,6 @@ const MainSite: React.FC = () => {
 };
 
 function App() {
-  console.log('App rendering...');
-  
   return (
     <Router>
       <Routes>

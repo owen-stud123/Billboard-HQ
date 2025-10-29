@@ -24,64 +24,114 @@ const TypeFilter: React.FC<{ type: string; setType: (v: string)=>void }> = ({ ty
 );
 
 const Marketplace: React.FC = () => {
-  const all = billboardsRepo.all();
+  const [tick, setTick] = useState(0);
+  const all = useMemo(() => billboardsRepo.all(), [tick]);
   const [q, setQ] = useState('');
   const [city, setCity] = useState('');
   const [type, setType] = useState('');
   const [bidAmount, setBidAmount] = useState<Record<string, string>>({});
   const [message, setMessage] = useState<Record<string, string>>({});
+  const [nameBy, setNameBy] = useState<Record<string, string>>({});
+  const [emailBy, setEmailBy] = useState<Record<string, string>>({});
+  const [phoneBy, setPhoneBy] = useState<Record<string, string>>({});
+  const [companyBy, setCompanyBy] = useState<Record<string, string>>({});
   const [showBid, setShowBid] = useState<Record<string, boolean>>({});
   const [showContact, setShowContact] = useState<Record<string, boolean>>({});
+  const [toast, setToast] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const rwf = new Intl.NumberFormat('rw-RW', { style: 'currency', currency: 'RWF' });
 
   const cities = useMemo(()=>Array.from(new Set(all.map(b=>b.location.city))), [all]);
 
-  const available = useMemo(()=>
-    billboardsRepo.findAvailable()
+  const boards = useMemo(()=>
+    all
       .filter(b => !q || b.location.address.toLowerCase().includes(q.toLowerCase()) || b.code.toLowerCase().includes(q.toLowerCase()))
       .filter(b => !city || b.location.city === city)
       .filter(b => !type || b.type === type as Billboard['type'])
-  , [q, city, type]);
+  , [q, city, type, all]);
 
   const submitBid = (b: Billboard) => {
     const v = Number(bidAmount[b.id]);
-    if (!Number.isFinite(v) || v <= 0) { alert('Please enter a valid amount'); return; }
+    if (!Number.isFinite(v) || v <= 0) { setToast({ type: 'error', text: 'Please enter a valid amount' }); return; }
+    const name = (nameBy[b.id] ?? '').trim();
+    const email = (emailBy[b.id] ?? '').trim();
+    const phone = (phoneBy[b.id] ?? '').trim();
+    const companyName = (companyBy[b.id] ?? '').trim();
+    if (!name || !email) { setToast({ type: 'error', text: 'Please provide your name and email' }); return; }
     bidsRepo.create({
       id: `bid-${Date.now()}`,
       billboardId: b.id,
       companyId: 'guest-company',
       amount: v,
+      name,
+      email,
+      phone,
+      companyName,
       createdAt: new Date().toISOString(),
       status: 'open',
     });
     setShowBid(s => ({ ...s, [b.id]: false }));
     setBidAmount(s => ({ ...s, [b.id]: '' }));
-    alert('Bid submitted! The owner will review it.');
+    setNameBy(s => ({ ...s, [b.id]: '' }));
+    setEmailBy(s => ({ ...s, [b.id]: '' }));
+    setPhoneBy(s => ({ ...s, [b.id]: '' }));
+    setCompanyBy(s => ({ ...s, [b.id]: '' }));
+    setToast({ type: 'success', text: 'Bid submitted! The owner will review it.' });
   };
 
   const submitContact = (b: Billboard) => {
     const text = (message[b.id] ?? '').trim();
-    if (text.length < 3) { alert('Please enter a message'); return; }
-    // In a real app this would POST to an API. We avoid console logs as requested.
+    const name = (nameBy[b.id] ?? '').trim();
+    const email = (emailBy[b.id] ?? '').trim();
+    const phone = (phoneBy[b.id] ?? '').trim();
+    const companyName = (companyBy[b.id] ?? '').trim();
+    if (!name || !email) { setToast({ type: 'error', text: 'Please provide your name and email' }); return; }
+    if (text.length < 3) { setToast({ type: 'error', text: 'Please enter a message' }); return; }
+    // Store a zero-amount inquiry as a bid-like record so it's visible in dashboard
+    bidsRepo.create({
+      id: `inquiry-${Date.now()}`,
+      billboardId: b.id,
+      companyId: 'guest-company',
+      amount: 0,
+      note: text,
+      name,
+      email,
+      phone,
+      companyName,
+      createdAt: new Date().toISOString(),
+      status: 'open',
+    });
     setShowContact(s => ({ ...s, [b.id]: false }));
     setMessage(s => ({ ...s, [b.id]: '' }));
-    alert('Message sent. We will get back to you soon.');
+    setNameBy(s => ({ ...s, [b.id]: '' }));
+    setEmailBy(s => ({ ...s, [b.id]: '' }));
+    setPhoneBy(s => ({ ...s, [b.id]: '' }));
+    setCompanyBy(s => ({ ...s, [b.id]: '' }));
+    setToast({ type: 'success', text: 'Message sent. We will get back to you soon.' });
   };
 
   return (
-    <section className="py-16 bg-gray-50 min-h-screen">
+    <section className="pt-32 pb-16 bg-gray-50 min-h-screen">
       <div className="max-w-6xl mx-auto px-4">
+        {toast && (
+          <div className={`mb-4 p-3 rounded ${toast.type === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
+            <div className="flex items-center justify-between">
+              <span>{toast.text}</span>
+              <button onClick={()=>setToast(null)} className="text-sm underline">Dismiss</button>
+            </div>
+          </div>
+        )}
         <div className="mb-8 flex flex-wrap gap-3 items-center justify-between">
           <h1 className="text-2xl font-bold text-gray-900">Available Billboards</h1>
           <div className="flex gap-3 items-center">
             <input className="border rounded px-3 py-2" placeholder="Search code or address" value={q} onChange={(e)=>setQ(e.target.value)} />
             <CityFilter city={city} setCity={setCity} cities={cities} />
             <TypeFilter type={type} setType={setType} />
+            <button onClick={()=>setTick(t=>t+1)} className="px-3 py-2 rounded bg-sky-600 hover:bg-sky-700 text-white text-sm">Refresh</button>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {available.map((b, idx) => (
+          {boards.map((b, idx) => (
             <div key={b.id} className="bg-white rounded-xl shadow hover:shadow-lg transition border overflow-hidden">
               <div className="h-40 w-full overflow-hidden">
                 <img src={[bill1, bill2, bill3, bill4, bill5][idx % 5]} alt={b.code} className="w-full h-40 object-cover" />
@@ -98,7 +148,7 @@ const Marketplace: React.FC = () => {
                       'text-xs inline-block mt-1 px-2 py-0.5 rounded ' +
                       (b.status === 'available' ? 'bg-green-50 text-green-700' : b.status === 'occupied' ? 'bg-red-50 text-red-700' : 'bg-amber-50 text-amber-700')
                     }>
-                      {b.status}
+                      {b.status === 'occupied' ? 'unavailable' : b.status}
                     </div>
                   </div>
                 </div>
@@ -119,6 +169,12 @@ const Marketplace: React.FC = () => {
 
                 {showContact[b.id] && (
                   <div className="mb-3 border rounded p-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2">
+                      <input value={nameBy[b.id] ?? ''} onChange={(e)=>setNameBy(s=>({...s, [b.id]: e.target.value}))} className="border rounded px-3 py-2 text-sm" placeholder="Your name" />
+                      <input value={emailBy[b.id] ?? ''} onChange={(e)=>setEmailBy(s=>({...s, [b.id]: e.target.value}))} className="border rounded px-3 py-2 text-sm" placeholder="Email" />
+                      <input value={phoneBy[b.id] ?? ''} onChange={(e)=>setPhoneBy(s=>({...s, [b.id]: e.target.value}))} className="border rounded px-3 py-2 text-sm" placeholder="Phone" />
+                      <input value={companyBy[b.id] ?? ''} onChange={(e)=>setCompanyBy(s=>({...s, [b.id]: e.target.value}))} className="border rounded px-3 py-2 text-sm" placeholder="Company (optional)" />
+                    </div>
                     <textarea
                       value={message[b.id] ?? ''}
                       onChange={(e)=>setMessage(s=>({...s, [b.id]: e.target.value}))}
@@ -134,6 +190,12 @@ const Marketplace: React.FC = () => {
 
                 {showBid[b.id] && (
                   <div className="border rounded p-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-2">
+                      <input value={nameBy[b.id] ?? ''} onChange={(e)=>setNameBy(s=>({...s, [b.id]: e.target.value}))} className="border rounded px-3 py-2 text-sm" placeholder="Your name" />
+                      <input value={emailBy[b.id] ?? ''} onChange={(e)=>setEmailBy(s=>({...s, [b.id]: e.target.value}))} className="border rounded px-3 py-2 text-sm" placeholder="Email" />
+                      <input value={phoneBy[b.id] ?? ''} onChange={(e)=>setPhoneBy(s=>({...s, [b.id]: e.target.value}))} className="border rounded px-3 py-2 text-sm" placeholder="Phone" />
+                      <input value={companyBy[b.id] ?? ''} onChange={(e)=>setCompanyBy(s=>({...s, [b.id]: e.target.value}))} className="border rounded px-3 py-2 text-sm" placeholder="Company (optional)" />
+                    </div>
                     <div className="flex items-center gap-2 mb-2">
                       <label className="text-sm text-gray-600" htmlFor={`bid-${b.id}`}>Bid (RWF/mo):</label>
                       <input
@@ -156,7 +218,7 @@ const Marketplace: React.FC = () => {
           ))}
         </div>
 
-        {available.length === 0 && (
+        {boards.length === 0 && (
           <div className="text-center text-gray-500 mt-10">No billboards match your filters.</div>
         )}
       </div>

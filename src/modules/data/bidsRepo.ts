@@ -25,5 +25,12 @@ export const bidsRepo = {
     const item = all[idx]!;
     item.status = status;
     save(all);
+  },
+  remove(id: string) {
+    const all = load();
+    const idx = all.findIndex(b => b.id === id);
+    if (idx === -1) return;
+    all.splice(idx, 1);
+    save(all);
   }
 };
