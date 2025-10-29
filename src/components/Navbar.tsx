@@ -1,31 +1,32 @@
-import React,{useState} from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { FiAlignRight, FiX } from "react-icons/fi";
 
-const Navbar = () => {
-    const [nav, setNav] = useState(false);
+interface NavItem {
+  name: string;
+  id: string;
+}
 
-    const handleNav = () => {
-        setNav(!nav)
+const Navbar: React.FC = () => {
+  const [nav, setNav] = useState(false);
+
+  const handleNav = () => setNav(!nav);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+    setNav(false);
+  };
 
-    const scrollToSection = (sectionId) => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-        setNav(false); // Close mobile menu after clicking
-    }
-
-    const location = useLocation();
-    const isDashboard = location.pathname.startsWith('/dashboard');
-
-    const navItems = [
-        { name: 'Home', id: 'home' },
-        { name: 'Services', id: 'services' },
-        { name: 'Billboards', id: 'billboards' },
-        { name: 'Contact', id: 'contact' }
-    ];
+  const location = useLocation();
+  const navItems: NavItem[] = [
+    { name: 'Home', id: 'home' },
+    { name: 'Services', id: 'services' },
+    { name: 'Billboards', id: 'billboards' },
+    { name: 'Contact', id: 'contact' },
+  ];
 
   return (
     <div className='fixed top-0 left-0 right-0 z-50 bg-[#000300]/95 backdrop-blur-sm shadow-lg'>
@@ -37,8 +38,8 @@ const Navbar = () => {
           Billboard HQ .
         </h1>
         <ul className='hidden md:flex items-center'>
-          {navItems.map((item) => (
-            <li 
+          {navItems.map(item => (
+            <li
               key={item.id}
               onClick={() => scrollToSection(item.id)}
               className='p-4 cursor-pointer hover:text-[#25fcb8] transition-colors duration-300 font-medium'
@@ -64,7 +65,7 @@ const Navbar = () => {
             <FiX onClick={handleNav} className='text-2xl cursor-pointer hover:text-[#25fcb8] transition-colors' />
           </div>
           <ul className='uppercase p-4 bg-[#000300]'>
-            {navItems.map((item) => (
+            {navItems.map(item => (
               <li 
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
@@ -83,10 +84,10 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-       </div>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

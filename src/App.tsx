@@ -1,15 +1,16 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Navbar from './Components/Navbar.jsx'
-import HeroSection from './Components/HeroSection.jsx';
-import Services from './Components/Services.jsx';
-import Billboards from './Components/Billboards.jsx';
-import Contact from './Components/Contact.jsx';
-import DashboardApp from './dashboard/DashboardApp.jsx';
-import Footer from './Components/Footer.jsx';
+import Navbar from './components/Navbar'
+import HeroSection from './pages/HeroSection'
+import Services from './pages/Services'
+import Billboards from './pages/Billboards'
+import Contact from './pages/Contact'
+import DashboardApp from './dashboard/DashboardApp'
+import Marketplace from './modules/marketplace/Marketplace'
+import Footer from './components/Footer'
 
 // Main Site Component
-const MainSite = () => {
+const MainSite: React.FC = () => {
   return (
     <div>
       <Navbar />
@@ -30,7 +31,14 @@ function App() {
       <Routes>
         {/* Main Website Routes */}
         <Route path="/" element={<MainSite />} />
-        
+        <Route path="/marketplace" element={
+          <div>
+            <Navbar />
+            <Marketplace />
+            <Footer />
+          </div>
+        } />
+
         {/* Dashboard Routes */}
         <Route path="/dashboard/*" element={<DashboardApp />} />
       </Routes>

@@ -1,30 +1,36 @@
-import React from 'react';
+import React, { type JSX } from 'react';
 import { FaMapMarkedAlt, FaHandshake, FaChartLine, FaBullhorn } from 'react-icons/fa';
 
-const services = [
+interface Service {
+  icon: JSX.Element;
+  title: string;
+  description: string;
+}
+
+const services: Service[] = [
   {
     icon: <FaMapMarkedAlt />,
     title: "Billboard Discovery",
-    description: "Browse and discover available billboards across Rwanda with detailed location information and photos."
+    description: "Browse and discover available billboards across Rwanda with detailed location information and photos.",
   },
   {
     icon: <FaHandshake />,
     title: "Direct Connection",
-    description: "Connect directly with billboard owners without intermediaries for transparent negotiations."
+    description: "Connect directly with billboard owners without intermediaries for transparent negotiations.",
   },
   {
     icon: <FaChartLine />,
     title: "Analytics Dashboard",
-    description: "Track your advertising campaigns with real-time analytics and performance metrics."
+    description: "Track your advertising campaigns with real-time analytics and performance metrics.",
   },
   {
     icon: <FaBullhorn />,
     title: "Campaign Management",
-    description: "Manage multiple billboard campaigns from a single, user-friendly dashboard."
-  }
+    description: "Manage multiple billboard campaigns from a single, user-friendly dashboard.",
+  },
 ];
 
-const Services = () => {
+const Services: React.FC = () => {
   return (
     <section id="services" className="py-20 bg-gradient-to-br from-[#000300] to-gray-900 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -82,3 +88,4 @@ const Services = () => {
 };
 
 export default Services;
+

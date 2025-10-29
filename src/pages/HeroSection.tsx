@@ -1,7 +1,6 @@
 import React from 'react'
 
-
-const HeroSection = () => {
+const HeroSection: React.FC = () => {
   return (
     <section id="home" className="flex items-center justify-center min-h-screen pt-24">
       <div className="bg-black/50 p-8 rounded-2xl text-white max-w-2xl">
