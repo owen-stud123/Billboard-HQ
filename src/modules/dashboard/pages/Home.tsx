@@ -31,13 +31,13 @@ const Home = () => {
 
     <div>
       <p className='font-sans text-gray-800 text-sm'>Our billboard advertising platform bridges the gap between businesses and billboard owners, 
-         making outdoor advertising easier, smarter, and more accessible. Companies can browse available billboard spaces across different regions, 
-         compare pricing and locations, and quickly connect with billboard managers to secure advertising placements.
-         Billboard owners gain powerful tools to manage and monitor their inventory in real-time — from location tracking and occupancy status to contract duration and client history. 
+         making outdoor advertising easier, smarter and more accessible. Companies can browse available billboard spaces across different regions, 
+         compare pricing and locations and quickly connect with billboard managers to secure advertising placements.
+         Billboard owners gain powerful tools to manage and monitor their inventory in real-time. From location tracking and occupancy status to contract duration and client history.
          When an advertising contract ends, the billboard automatically switches back to “Available,” ensuring smooth and efficient turnover.
          To maximize opportunity, billboards in high-demand areas also feature a bidding option, 
          allowing companies to compete for premium advertising spots and owners to earn greater value from strategic locations.
-         We are transforming the future of outdoor advertising by promoting transparency, efficiency, and growth for both businesses and billboard operators.
+         We are transforming the future of outdoor "kdkd,x" advertising by promoting transparency, efficiency and growth for both businesses and billboard operators.
       </p>
     </div>
   </div>
