@@ -351,7 +351,7 @@ const Analytics: React.FC = () => {
         </div>
 
         {/* Billboard Status Card */}
-        <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
+        <div className="bg-white rounded-xl shadow-lg p-4 hover:shadow-xl transition-shadow">
           <div className="mb-4">
             <h3 className="text-lg font-semibold text-gray-800">Billboard Status</h3>
             <p className="text-sm text-gray-500">Current status distribution</p>
