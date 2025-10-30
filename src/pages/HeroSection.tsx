@@ -17,7 +17,7 @@ const HeroSection: React.FC = () => {
             e.preventDefault();
             document.getElementById('billboards')?.scrollIntoView({ behavior: 'smooth' });
           }}
-          className="bg-sky-600 hover:bg-sky-700 px-6 py-3 rounded-xl text-white font-semibold transition-all duration-300"
+          className="bg-emerald-600 hover:bg-emerald-700 px-6 py-3 rounded-xl text-bla font-semibold transition-all duration-300"
         >
           Explore Billboards
         </a>
@@ -27,7 +27,7 @@ const HeroSection: React.FC = () => {
             e.preventDefault();
             document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
           }}
-          className="bg-white text-sky-600 border border-sky-600 px-6 py-3 rounded-xl font-semibold hover:bg-sky-100 transition-all duration-300"
+          className="bg-white text-emerald-600 border border-emerald-600 px-6 py-3 rounded-xl font-semibold hover:bg-white/60 transition-all duration-300"
         >
           Get in Touch
         </a>

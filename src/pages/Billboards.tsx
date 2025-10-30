@@ -69,7 +69,7 @@ const Billboards: React.FC = () => {
 
                 <Link
                   to="/marketplace"
-                  className="inline-flex items-center justify-center bg-gradient-to-r from-sky-600 to-sky-700 hover:from-sky-700 hover:to-sky-800 text-white px-6 py-3 rounded-xl font-semibold transition-transform duration-300 hover:scale-105 shadow-md"
+                  className="inline-flex items-center justify-center bg-gradient-to-r from-emerald-400 to-emerald-500 hover:from-emerald-400 hover:to-emerald-500 text-white px-6 py-3 rounded-xl font-semibold transition-transform duration-300 hover:scale-105 shadow-md"
                 >
                   Explore More
                   <svg

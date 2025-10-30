@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
       <div className='flex justify-between items-center h-24 max-w-[1240px] mx-auto px-4 text-white'>
         <h1 
           onClick={() => scrollToSection('home')}
-          className='text-full text-3xl font-bold text-[#25fcb8] cursor-pointer hover:text-[#1fdb9f] transition-colors duration-300'
+          className='text-full text-3xl font-bold text-[#25fcb8] cursor-pointer hover:text-[#128f67] transition-colors duration-300'
         >
           Billboard HQ .
         </h1>

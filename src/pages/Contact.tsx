@@ -85,7 +85,7 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Why Choose Us */}
-            <div className="bg-gradient-to-r from-sky-600 to-sky-700 text-white rounded-2xl p-8 shadow">
+            <div className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-2xl p-8 shadow">
               <h3 className="text-2xl font-bold mb-4">Why Choose Us?</h3>
               <ul className="space-y-2">
                 {benefits.map((b, i) => (
@@ -127,7 +127,7 @@ const Contact: React.FC = () => {
 
               <button
                 type="submit"
-                className="w-full flex items-center justify-center space-x-2 bg-gradient-to-r from-sky-600 to-sky-700 text-white py-4 rounded-xl font-bold hover:scale-105 transition"
+                className="w-full flex items-center justify-center space-x-2 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white py-4 rounded-xl font-bold hover:scale-105 transition"
               >
                 <span>Send Message</span>
                 <FaPaperPlane />
