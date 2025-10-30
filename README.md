@@ -116,10 +116,6 @@ npm run lint
 **Owen**
 - GitHub: [@owen-stud123](https://github.com/owen-stud123)
 
-## Documentation
-
-For detailed dashboard documentation, see [DASHBOARD_README.md](./DASHBOARD_README.md)
-
 ---
 
 Built using React + Vite
