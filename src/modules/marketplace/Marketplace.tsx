@@ -126,7 +126,7 @@ const Marketplace: React.FC = () => {
             <input className="border rounded px-3 py-2" placeholder="Search code or address" value={q} onChange={(e)=>setQ(e.target.value)} />
             <CityFilter city={city} setCity={setCity} cities={cities} />
             <TypeFilter type={type} setType={setType} />
-            <button onClick={()=>setTick(t=>t+1)} className="px-3 py-2 rounded bg-sky-600 hover:bg-sky-700 text-white text-sm">Refresh</button>
+            <button onClick={()=>setTick(t=>t+1)} className="px-3 py-2 rounded bg-emerald-600 hover:bg-emerald-700 text-white text-sm">Refresh</button>
           </div>
         </div>
 
@@ -161,9 +161,9 @@ const Marketplace: React.FC = () => {
                 </div>
 
                 <div className="flex gap-3 mb-3">
-                  <button onClick={()=>setShowContact(s=>({...s, [b.id]: !s[b.id]}))} className="px-4 py-2 rounded-md bg-sky-600 hover:bg-sky-700 text-white text-sm">Contact</button>
+                  <button onClick={()=>setShowContact(s=>({...s, [b.id]: !s[b.id]}))} className="px-4 py-2 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white text-sm">Contact</button>
                   {b.biddingEnabled && (
-                    <button onClick={()=>setShowBid(s=>({...s, [b.id]: !s[b.id]}))} className="px-4 py-2 rounded-md bg-indigo-600 hover:bg-indigo-700 text-white text-sm">Place bid</button>
+                    <button onClick={()=>setShowBid(s=>({...s, [b.id]: !s[b.id]}))} className="px-4 py-2 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white text-sm">Place bid</button>
                   )}
                 </div>
 
@@ -208,7 +208,7 @@ const Marketplace: React.FC = () => {
                       />
                     </div>
                     <div className="flex gap-2">
-                      <button onClick={()=>submitBid(b)} className="px-3 py-1.5 rounded bg-indigo-600 hover:bg-indigo-700 text-white text-sm">Submit bid</button>
+                      <button onClick={()=>submitBid(b)} className="px-3 py-1.5 rounded bg-emerald-600 hover:bg-emerald-700 text-white text-sm">Submit bid</button>
                       <button onClick={()=>setShowBid(s=>({...s, [b.id]: false}))} className="px-3 py-1.5 rounded border text-sm">Cancel</button>
                     </div>
                   </div>

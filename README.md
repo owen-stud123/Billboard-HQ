@@ -1,17 +1,17 @@
-# 🏢 Billboard HQ
+# Billboard HQ
 
 A modern, full-featured billboard advertising management platform with an integrated admin dashboard. Built with React, Vite, and Tailwind CSS.
 
-## ✨ Features
+## Features
 
-### 🌐 Main Website
+### Main Website
 - **Responsive Landing Page** - Modern design with smooth scrolling
 - **Hero Section** - Eye-catching introduction with call-to-action
 - **Services Showcase** - Display billboard advertising services
 - **Billboard Gallery** - Showcase available billboard locations
 - **Contact Form** - Easy client communication
 
-### 📊 Admin Dashboard
+### Admin Dashboard
 - **Authentication System** - Secure login with protected routes
 - **Dashboard Overview** - Real-time statistics and metrics
   - Total billboards count
@@ -23,7 +23,7 @@ A modern, full-featured billboard advertising management platform with an integr
 - **Recent Activity Feed** - Monitor latest actions
 - **Modern UI/UX** - Purple gradient theme with smooth animations
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js (v16 or higher)
@@ -51,48 +51,20 @@ A modern, full-featured billboard advertising management platform with an integr
    - Main Site: `http://localhost:5173/`
    - Dashboard: `http://localhost:5173/dashboard/login`
 
-## 🔐 Dashboard Access
+## Dashboard Access
 
 **Demo Credentials:**
 ```
-Username: admin
-Password: admin123
+Email: owner@example.com 
+Password: password
 ```
 
-> ⚠️ **Note:** This is a demo authentication system using localStorage. For production, implement proper backend authentication with JWT or OAuth.
+> **Note:** This is a demo authentication system using localStorage.
 
-## 📁 Project Structure
+## Project Structure
 
-```
-Billboard HQ/
-├── src/
-│   ├── Components/          # Main website components
-│   │   ├── Navbar.jsx
-│   │   ├── HeroSection.jsx
-│   │   ├── Services.jsx
-│   │   ├── Billboards.jsx
-│   │   └── Contact.jsx
-│   ├── dashboard/           # Dashboard feature
-│   │   ├── dashboardcomponents/
-│   │   │   ├── Sidebar.jsx
-│   │   │   ├── DashboardHeader.jsx
-│   │   │   ├── StatCard.jsx
-│   │   │   ├── dashboardlayout.jsx
-│   │   │   └── dashboardStyles.css
-│   │   ├── dashboardpages/
-│   │   │   ├── Dashboard.jsx
-│   │   │   ├── Login.jsx
-│   │   │   ├── Profile.jsx
-│   │   │   └── Tables.jsx
-│   │   └── DashboardApp.jsx
-│   ├── App.jsx              # Main app router
-│   ├── main.jsx
-│   └── index.css
-├── public/
-└── package.json
-```
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Frontend Framework:** React 19
 - **Build Tool:** Vite
@@ -101,7 +73,7 @@ Billboard HQ/
 - **Icons:** React Icons
 - **Animations:** React Typed
 
-## 📄 Available Scripts
+## Available Scripts
 
 ```bash
 # Start development server
@@ -117,44 +89,37 @@ npm run preview
 npm run lint
 ```
 
-## 🗺️ Roadmap
+## Roadmap
 
-### Current Features ✅
-- [x] Responsive landing page
-- [x] Admin dashboard with authentication
-- [x] Protected routes
-- [x] Billboard inventory table
-- [x] Statistics dashboard
+### Current Features 
+-  Responsive landing page
+-  Admin dashboard with authentication
+-  Protected routes
+-  Billboard inventory table
+- Statistics dashboard
 
-### Planned Features 🚧
+### Planned Features 
 - [ ] Backend API integration
 - [ ] Real authentication (JWT/OAuth)
 - [ ] Billboard CRUD operations
 - [ ] Advanced analytics with charts (Chart.js/Recharts)
 - [ ] Client management system
-- [ ] Campaign scheduling
 - [ ] Image upload for billboards
 - [ ] Payment integration
 - [ ] Notifications system
 - [ ] Dark/Light theme toggle
 
-## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📝 License
-
-This project is licensed under the MIT License.
-
-## 👤 Author
+## Author
 
 **Owen**
 - GitHub: [@owen-stud123](https://github.com/owen-stud123)
 
-## 📚 Documentation
+## Documentation
 
 For detailed dashboard documentation, see [DASHBOARD_README.md](./DASHBOARD_README.md)
 
 ---
 
-Built with ❤️ using React + Vite
+Built using React + Vite
