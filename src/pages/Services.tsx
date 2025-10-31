@@ -21,11 +21,11 @@ const services: Service[] = [
   {
     icon: <FaChartLine />,
     title: "Analytics Dashboard",
-    description: "Track your advertising campaigns with real-time analytics and performance metrics.",
+    description: "Track your advertising campaigns in real-time and track their performance.",
   },
   {
     icon: <FaBullhorn />,
-    title: "Campaign Management",
+    title: "Easy Management",
     description: "Manage multiple billboard campaigns from a single, user-friendly dashboard.",
   },
 ];
