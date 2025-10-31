@@ -6,10 +6,10 @@ const Footer: React.FC = () => (
       <div>
         <div className="flex items-center gap-2">
           <div className="h-8 w-8 rounded bg-gradient-to-br from-indigo-600 to-purple-600" />
-          <span className="font-semibold tracking-tight text-white">Billboards</span>
-        </div>
+          <span className="font-semibold tracking-tight text-white">Billboards HQ</span>
+        </div> 
         <p className="mt-4 text-sm text-gray-400">
-          Reaching audiences locally and nationally with impactful OOH.
+          Reaching audiences locally and nationally with impactful Billboards.
         </p>
       </div>
       <div>
@@ -18,16 +18,16 @@ const Footer: React.FC = () => (
           <li>Formats</li>
           <li>Environments</li>
           <li>Locations</li>
-          <li>Programmatic</li>
+      
         </ul>
       </div>
       <div>
-        <h4 className="text-white font-medium">Why OOH</h4>
+        <h4 className="text-white font-medium">Why Billboards HQ</h4>
         <ul className="mt-3 space-y-2 text-sm">
           <li>Drives search</li>
-          <li>Builds trust</li>
-          <li>Mental availability</li>
-          <li>DOOH impact</li>
+          <li>Building trust</li>
+          <li>Our Mission</li>
+          <li>Digital impact</li>
         </ul>
       </div>
       <div>
@@ -42,7 +42,7 @@ const Footer: React.FC = () => (
     </div>
     <div className="border-t border-white/10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 text-sm flex flex-col md:flex-row items-center justify-center gap-3">
-        <p className="text-gray-400">© 2025 Billboards. All rights reserved.</p>
+        <p className="text-gray-400">@ 2025 Billboards. All rights reserved.</p>
       </div>
     </div>
   </footer>

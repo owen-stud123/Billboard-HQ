@@ -38,8 +38,8 @@ const Contact: React.FC = () => {
   };
 
   const contactInfo: ContactInfo[] = [
-    { icon: <FaEnvelope />, title: "Email", value: "----@gmail.com" },
-    { icon: <FaPhone />, title: "Phone", value: "+250 --- --- ---" },
+    { icon: <FaEnvelope />, title: "Email", value: "...@gmail.com" },
+    { icon: <FaPhone />, title: "Phone", value: "+250 ... " },
     { icon: <FaMapMarkerAlt />, title: "Location", value: "Kigali, Rwanda" },
   ];
 
@@ -58,7 +58,7 @@ const Contact: React.FC = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-extrabold text-gray-900 mb-3">Get In Touch</h2>
           <p className="text-lg text-gray-600">
-            Have questions? Send us a message and we’ll respond as soon as possible.
+            Have questions? message us and we'll respond as soon as possible.
           </p>
         </div>
 
@@ -89,7 +89,7 @@ const Contact: React.FC = () => {
               <h3 className="text-2xl font-bold mb-4">Why Choose Us?</h3>
               <ul className="space-y-2">
                 {benefits.map((b, i) => (
-                  <li key={i}>✓ {b}</li>
+                  <li key={i}>* {b}</li>
                 ))}
               </ul>
             </div>
