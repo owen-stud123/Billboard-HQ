@@ -115,7 +115,6 @@ npm run lint
 
 **Owen**
 - GitHub: [@owen-stud123](https://github.com/owen-stud123)
+**Gadiella**
+- GitHub: [@Gisabo-Gadiella](https://github.com/Gisabo-Gadiella)
 
----
-
-Built using React + Vite
