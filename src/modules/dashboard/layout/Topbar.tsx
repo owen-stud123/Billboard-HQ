@@ -19,7 +19,7 @@ const Topbar: React.FC = () => {
         <div className="text-sm text-gray-700">{user.name}</div>
         <button
           onClick={logout}
-          className="px-3 py-1.5 rounded bg-blue-700 text-white hover:bg-blue-800 text-sm transition"
+          className="px-3 py-1.5 rounded bg-green-700 text-white hover:bg-green-800 text-sm transition"
         >
           Logout
         </button>

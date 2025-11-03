@@ -21,7 +21,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-950 to-blue-800">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-emerald-950 to-emerald-800">
       <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-6">
@@ -63,7 +63,7 @@ const Login: React.FC = () => {
 
           <button
             type="submit"
-            className="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 rounded-md transition"
+            className="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-semibold py-2 rounded-md transition"
           >
             Login
           </button>

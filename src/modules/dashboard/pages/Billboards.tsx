@@ -52,9 +52,9 @@ const Billboards: React.FC = () => {
         <div className="flex gap-3">
           <button 
             onClick={handleAdd}
-            className="px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition"
+            className="px-4 py-2 bg-green-700 text-white rounded-md hover:bg-green-800 transition"
           >
-            + Add Billboard
+            Add Billboard
           </button>
           <button 
             onClick={handleOpenEditList}
@@ -101,7 +101,7 @@ const Billboards: React.FC = () => {
                 </td>
                 <td className="py-3 px-4 text-right">
                   {b.status === 'available' ? (
-                    <button className="text-blue-600 hover:underline">Bid</button>
+                    <button className="text-black-600 hover:underline">Bid</button>
                   ) : (
                     <span className="text-gray-400">Unavailable</span>
                   )}

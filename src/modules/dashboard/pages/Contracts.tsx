@@ -87,14 +87,14 @@ const Contracts: React.FC = () => {
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-semibold text-gray-900">Contracts</h1>
         <div className="flex flex-wrap gap-2">
-          <button onClick={refresh} className="px-3 py-2 rounded bg-sky-600 hover:bg-sky-700 text-white text-sm">
+          <button onClick={refresh} className="px-3 py-2 rounded bg-emerald-600 hover:bg-emerald-700 text-white text-sm">
             Refresh
           </button>
           <button
             onClick={() => selected && startEdit(selected.id)}
             disabled={!selected}
             className={`px-3 py-2 rounded text-sm ${
-              selected ? 'bg-blue-600 hover:bg-blue-700 text-white' : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+              selected ? 'bg-emerald-600 hover:bg-emerald-700 text-white' : 'bg-gray-200 text-gray-500 cursor-not-allowed'
             }`}
           >
             Edit
@@ -103,7 +103,7 @@ const Contracts: React.FC = () => {
             onClick={() => selected && deleteContract(selected.id)}
             disabled={!selected || selected?.status !== 'ended'}
             className={`px-3 py-2 rounded text-sm ${
-              selected?.status === 'ended' ? 'bg-red-700 hover:bg-red-800 text-white' : 'bg-gray-200 text-gray-500 cursor-not-allowed'
+              selected?.status === 'ended' ? 'bg-gray-700 hover:bg-gray-800 text-white' : 'bg-gray-200 text-gray-500 cursor-not-allowed'
             }`}
           >
             Delete
@@ -187,13 +187,13 @@ const Contracts: React.FC = () => {
                       <div className="flex gap-2">
                         <button
                           onClick={() => extendContract(c.id)}
-                          className="px-3 py-1.5 rounded bg-blue-600 hover:bg-sky-700 text-white"
+                          className="px-3 py-1.5 rounded bg-emerald-600 hover:bg-emerald-700 text-white"
                         >
                           Extend 30 days
                         </button>
                         <button
                           onClick={() => endContract(c.id)}
-                          className="px-3 py-1.5 rounded bg-red-700 hover:bg-red-800 text-white"
+                          className="px-3 py-1.5 rounded bg-gray-700 hover:bg-gray-800 text-white"
                         >
                           End
                         </button>

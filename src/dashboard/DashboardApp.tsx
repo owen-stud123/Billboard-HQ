@@ -4,7 +4,7 @@ import DashboardLayout from '../modules/dashboard/layout/DashboardLayout';
 import Login from '../modules/dashboard/pages/Login';
 import Home from '../modules/dashboard/pages/Home';
 import Billboards from '../modules/dashboard/pages/Billboards';
-import Analytics from '../modules/dashboard/pages/Analytics';
+
 import Bids from '../modules/dashboard/pages/Bids';
 import Contracts from '../modules/dashboard/pages/Contracts';
 
@@ -30,7 +30,7 @@ const DashboardApp: React.FC = () => {
         <Route index element={<Home />} />
         <Route path="billboards" element={<Billboards />} />
         <Route path="contracts" element={<Contracts />} />
-        <Route path="analytics" element={<Analytics />} />
+       
         <Route path="bids" element={<Bids />} />
       </Route>
 

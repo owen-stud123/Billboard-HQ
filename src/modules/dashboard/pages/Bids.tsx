@@ -124,8 +124,8 @@ const Bids: React.FC = () => {
          
         </div>
         <div className="flex gap-2">
-          <button onClick={()=>setTick(t=>t+1)} className="px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800">Refresh</button>
-          <button onClick={deleteSelectedBid} disabled={!selectedBidId} className={`px-4 py-2 rounded-md ${selectedBidId ? 'bg-red-700 hover:bg-red-800 text-white' : 'bg-gray-200 text-gray-500 cursor-not-allowed'}`}>Delete</button>
+          <button onClick={()=>setTick(t=>t+1)} className="px-4 py-2 bg-green-700 text-white rounded-md hover:bg-green-800">Refresh</button>
+          <button onClick={deleteSelectedBid} disabled={!selectedBidId} className={`px-4 py-2 rounded-md ${selectedBidId ? 'bg-gray-700 hover:bg-gray-800 text-white' : 'bg-gray-200 text-gray-500 cursor-not-allowed'}`}>Delete</button>
         </div>
       </div>
 
@@ -205,8 +205,8 @@ const Bids: React.FC = () => {
          
         </div>
         <div className="flex gap-2">
-          <button onClick={()=>setTick(t=>t+1)} className="px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800">Refresh</button>
-          <button onClick={deleteSelectedContact} disabled={!selectedContactId} className={`px-4 py-2 rounded-md ${selectedContactId ? 'bg-red-700 hover:bg-red-800 text-white' : 'bg-gray-200 text-gray-500 cursor-not-allowed'}`}>Delete</button>
+          <button onClick={()=>setTick(t=>t+1)} className="px-4 py-2 bg-green-700 text-white rounded-md hover:bg-green-800">Refresh</button>
+          <button onClick={deleteSelectedContact} disabled={!selectedContactId} className={`px-4 py-2 rounded-md ${selectedContactId ? 'bg-gray-700 hover:bg-gray-800 text-white' : 'bg-gray-200 text-gray-500 cursor-not-allowed'}`}>Delete</button>
         </div>
       </div>
 
