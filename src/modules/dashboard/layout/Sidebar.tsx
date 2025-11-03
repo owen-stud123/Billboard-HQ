@@ -1,13 +1,20 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { 
+  FaTachometerAlt, 
+  FaImage, 
+  FaFileContract, 
+  FaGavel, 
+  FaUser,
+  FaHome
+} from 'react-icons/fa';
 
 const items = [
-  { to: '/dashboard', label: 'Dashboard', icon: '📊' },
-  { to: '/dashboard/billboards', label: 'Billboards', icon: '🏢' },
-  { to: '/dashboard/contracts', label: 'Contracts', icon: '📜' },
-  { to: '/dashboard/bids', label: 'Bids', icon: '💬' },
- 
-  { to: '/dashboard/profile', label: 'Profile', icon: '👤' },
+  { to: '/dashboard', label: 'Dashboard', icon: <FaTachometerAlt className="w-5 h-5" /> },
+  { to: '/dashboard/billboards', label: 'Billboards', icon: <FaImage className="w-5 h-5" /> },
+  { to: '/dashboard/contracts', label: 'Contracts', icon: <FaFileContract className="w-5 h-5" /> },
+  { to: '/dashboard/bids', label: 'Bids', icon: <FaGavel className="w-5 h-5" /> },
+  { to: '/dashboard/profile', label: 'Profile', icon: <FaUser className="w-5 h-5" /> },
 ];
 
 const Sidebar: React.FC = () => {
@@ -41,7 +48,9 @@ const Sidebar: React.FC = () => {
                       : 'flex items-center gap-3 px-3 py-2 rounded-md hover:bg-emerald-900'
                   }
                 >
-                  <span className="text-lg">{i.icon}</span>
+                  <div className="text-white/80 group-hover:text-white transition-colors">
+                    {i.icon}
+                  </div>
                   <span>{i.label}</span>
                 </NavLink>
               </li>
