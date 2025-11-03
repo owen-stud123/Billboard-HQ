@@ -52,7 +52,7 @@ const Navbar: React.FC = () => {
               to="/dashboard/login"
               className='bg-[#25fcb8] text-[#000300] px-6 py-2 rounded-full font-semibold hover:bg-[#1fdb9f] transition-all duration-300 hover:shadow-lg hover:shadow-[#25fcb8]/50'
             >
-              Dashboard
+              Login
             </Link>
           </li>
         </ul>
@@ -80,7 +80,7 @@ const Navbar: React.FC = () => {
                 onClick={() => setNav(false)}
                 className='block bg-[#25fcb8] text-[#000300] px-6 py-3 rounded-full font-semibold text-center hover:bg-[#1fdb9f] transition-all duration-300'
               >
-                Dashboard
+                Login
               </Link>
             </li>
           </ul>
